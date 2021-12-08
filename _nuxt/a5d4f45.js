@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{223:function(t,e,n){"use strict";n.r(e);var l={},o=n(51),component=Object(o.a)(l,(function(){var t=this.$createElement;return(this._self._c||t)("img",{attrs:{id:"logo",src:"/logo_white_left.png",width:"254px",height:"204.33px",alt:"",srcset:""}})}),[],!1,null,null,null);e.default=component.exports}}]);
