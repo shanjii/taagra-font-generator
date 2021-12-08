@@ -2,9 +2,9 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  mode: 'static',
+  target: 'static',
    router: {
-      base: '/taagra-font-generator/'
+      base: '/<repository-name>/'
    },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
