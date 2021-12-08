@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@font-face {
+    font-family: "TaagraBold";
+    src: local("TaagraBold"),
+        url(~assets/fonts/TaagraBold.otf) format("open-type");
+}
+
+html, body {
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#background {
+    display: flex;
+    flex-direction: column;
+    background-image: url("/moonshadow.jpg");
+    background-position-x: center;
+    background-position-y: bottom;
+    transition: 3s;
+    height: 100vh;
+    width: 100vw;
+}
+
+#logo {
+    margin: auto;
+}
+
+#start-prompt {
+    transform: translateY(0px);
+    transition: 2s;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.start-button {
+    margin-top: 20px;
+}
+
+#start-prompt.start {
+    transform: translateY(-100vh);
+}
+
+#background.start {
+    background-position-y: top;
+}
+
+#image-displayer {
+    display: none;
+    margin: auto;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: white;
+}
+
+#controller-box {
+    display: flex;
+    position: absolute;
+    transition: 1000ms;
+    bottom: -60px;
+    width: 100vw;
+    height: 60px;
+    margin-left: auto;
+}
+
+#controller-box.start {
+    bottom: 0px;
+}
+
+#controller-box>div {
+    display: flex;
+    margin: auto;
+    height: 100%;
+    width: 80%;
+    background-color: rgba(27, 27, 27, 0.623);
+}
+
+#controller-box>div>input {
+    margin: auto;
+}
+
+#controller-box>div>button {
+    margin: auto;
+}
