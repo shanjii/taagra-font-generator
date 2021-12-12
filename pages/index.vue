@@ -61,13 +61,13 @@ export default {
     };
   },
   mounted() {
-    this.refreshImage();
     this.getScreenWidth();
     window.onresize = this.getScreenWidth;
   },
   methods: {
     start() {
       transitionScreen();
+      this.refreshImage();
     },
     getScreenWidth() {
       this.screenWidth = window.innerWidth - 100;

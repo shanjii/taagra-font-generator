@@ -3,7 +3,7 @@
 @font-face {
     font-family: "TaagraBold";
     src: local("TaagraBold"),
-        url(~assets/fonts/TaagraBold.otf) format("open-type");
+        url(~assets/fonts/TaagraBold.otf) format("opentype");
 }
 
 html, body {
