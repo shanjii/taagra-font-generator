@@ -2,7 +2,7 @@
   <div id="background">
     <section id="start-prompt">
       <Logo />
-      <button class="start-button" @click="start">Start</button>
+      <button class="start-button" @click="start">OPEN EDITOR</button>
     </section>
     <section id="image-displayer">
       <img :src="image" alt="" srcset="" />
@@ -70,12 +70,12 @@ export default {
     getScreenWidth() {
       this.screenWidth = window.innerWidth - 100;
       if (this.screenWidth < 600) {
-        this.width = 200;
+        this.width = this.screenWidth - 100;
         this.text = "";
         this.fontSize = 24;
         this.isCompact = true;
       } else {
-        this.width = 400;
+        this.width = this.screenWidth - 100;
         this.fontSize = 50;
         this.isCompact = false;
       }
