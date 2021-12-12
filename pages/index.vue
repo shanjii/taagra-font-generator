@@ -21,6 +21,7 @@
           type="text"
           v-model="text"
           @keyup="refreshImage"
+          autocomplete="false"
           name=""
           id="controller-input"
         />
@@ -34,6 +35,7 @@
           type="text"
           v-model="text"
           @keyup="refreshImage"
+          autocomplete="false"
           name=""
           id="controller-input"
         />
