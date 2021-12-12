@@ -2,20 +2,34 @@
   <div id="background">
     <section id="start-prompt">
       <Logo />
-      <button class="start-button" @click="open">Start</button>
+      <button class="start-button" @click="start">Start</button>
     </section>
     <section id="image-displayer">
       <img :src="image" alt="" srcset="" />
     </section>
-    <section id="controller-box">
+    <!-- Desktop controller -->
+    <section id="controller-box" v-if="!isCompact">
       <div>
         <input
           type="range"
           v-model="width"
-          @change="refreshImage"
-          max="1800"
-          min="200"
+          @input="refreshImage"
+          :max="this.screenWidth"
+          min="100"
         />
+        <input
+          type="text"
+          v-model="text"
+          @keyup="refreshImage"
+          name=""
+          id="controller-input"
+        />
+        <button @click="download">Download</button>
+      </div>
+    </section>
+    <!-- Mobile controller -->
+    <section id="controller-box" v-if="isCompact">
+      <div style="width: 100%">
         <input
           type="text"
           v-model="text"
@@ -30,6 +44,7 @@
 </template>
 
 <script>
+import { transitionScreen } from "../scripts/animations";
 const textToImage = require("text-to-image");
 
 export default {
@@ -38,26 +53,38 @@ export default {
       image: null,
       text: "Dras'kay",
       width: 400,
+      isCompact: false,
+      screenWidth: null,
+      fontSize: 50,
     };
   },
   mounted() {
     this.refreshImage();
+    this.getScreenWidth();
+    window.onresize = this.getScreenWidth;
   },
   methods: {
-    open() {
-      document.getElementById("start-prompt").classList.add("start");
-      document.getElementById("background").classList.add("start");
-      setTimeout(() => {
-        document.getElementById("controller-box").classList.add("start"),
-          (document.getElementById("image-displayer").style.display = "flex"),
-          (document.getElementById("start-prompt").style.display = "none");
-      }, 1500);
+    start() {
+      transitionScreen();
+    },
+    getScreenWidth() {
+      this.screenWidth = window.innerWidth - 100;
+      if (this.screenWidth < 600) {
+        this.width = 200;
+        this.text = "";
+        this.fontSize = 24;
+        this.isCompact = true;
+      } else {
+        this.width = 400;
+        this.fontSize = 50;
+        this.isCompact = false;
+      }
+      this.refreshImage();
     },
     async refreshImage() {
-      this.text = document.getElementById("controller-input").value;
       this.image = await textToImage.generate(`\n ${this.text}`, {
         bgColor: "transparent",
-        fontSize: 50,
+        fontSize: this.fontSize,
         lineHeight: 70,
         maxWidth: this.width,
         customHeight: this.height,

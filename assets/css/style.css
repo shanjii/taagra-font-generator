@@ -51,8 +51,10 @@ html, body {
     display: none;
     margin: auto;
     border-left-style: solid;
+    opacity: 0;
     border-right-style: solid;
     border-color: white;
+    transition: ease-in 200ms;
 }
 
 #controller-box {
